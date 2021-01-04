@@ -18,7 +18,7 @@ Of course, your expense report is much larger. Find the two entries that sum to 
 
 from helper import load_data
 
-data = load_data("01.txt")
+data = load_data("inputs/01.txt")
 data.sort()
 
 
