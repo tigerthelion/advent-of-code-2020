@@ -64,6 +64,7 @@ def run_part_two(data):
             sum = data[i]+data[j]
             a = 2020 - sum
             if a > 0:
+                # This is sloppy.. I could tighten this up #TODO
                 ans = binary_search(data, a)
                 if not ans:
                     continue
