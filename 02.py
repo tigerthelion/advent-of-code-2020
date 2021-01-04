@@ -10,7 +10,7 @@ For example, 1-3 a means that the password must contain a at least 1 time and at
 
 """
 import re
-# Not working
+
 count = 0
 with open("inputs/02.txt") as f:
     data = f.readlines()
@@ -19,19 +19,16 @@ with open("inputs/02.txt") as f:
         print(res)
         # 1 is low, 2 is high, 3 is letter, 4 is password
         p_len = len(res[4])
-        c = 0 # character count
-        i = 0 # iteration count
+        c = 0  # character count
+        i = 0  # iteration count
         while(i < p_len):
-            # if there arent enough letters to make up the difference, quit
-            if int(res[1]) - c > (p_len - i - 1) or int(res[2]) - c > (p_len - i - 1)  :
-                break
+            # if there arent enough letters to make up the difference, quit #TODO
+            # if int(res[1]) - c > (p_len - i - 1) or int(res[2]) - c > (p_len - i - 1)  :
+            #     break
 
             if res[4][i] == res[3]:
                 c += 1
             i += 1
         if c in range(int(res[1]), int(res[2])+1):
-            count+=1
+            count += 1
     print(count)
-
-
-
