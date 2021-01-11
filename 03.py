@@ -1,50 +1,50 @@
 """
-
 https://adventofcode.com/2020/day/3
-
 """
+
 with open("inputs/03.txt") as f:
     # read in and parse data
-    map = ""
-
+    hill = []
     data = f.readlines()
-    cols = len(data[0].split()[0])
-    rows = 0
     for line in data:
         lsplt = line.split()
-
-        map += lsplt[0]
-        rows += 1
-print(map)
-print(rows)
-print(cols)
-
-register = []
-slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
-for i in slopes:
-
-    # rows = len(map)
-    # col = 3
-    # colmax = len(map[0]) - 1
-    # rowi = 0
-    # seek = 0
-    # trees = 0
-    # while rowi < rows:
-    #     if map[rowi][seek] == '#':
-    #         trees += 1
-
-    #     if seek > colmax - col:
-    #         seek = seek - colmax - 1
-
-    #     seek += col
-
-    #     rowi += row_seek
-    # print(trees)
-
-    # [1,1], [1,2], [1,4], [1, 6], [2, 1]
-    # [2,2], [2,5], [2,9], [2, 13], [4, 2]
+        hill.append(lsplt[0])
 
 
-def calc_trees(hill, slope: tuple):
-    rows = len(map)
-    col, row = slope
+
+runs = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
+
+
+def calc_trees(hill, run: tuple):
+    
+    rowx = len(hill) # Max num of rows
+    colx = len(hill[0]) - 1 # Max num of columns
+
+    col, row = run 
+
+    rowi, coli = 0, 0
+
+    treect = 0
+
+    while rowi < rowx:
+        if hill[rowi][coli] == '#':
+            treect += 1
+
+        if coli > colx - col:
+            coli = coli - colx - 1
+
+        coli += col
+
+        rowi += row
+
+    print(run, treect)
+    return treect
+
+
+ans = 0
+for run in runs:
+    if ans == 0:
+        ans = calc_trees(hill, run)
+    else:
+        ans *= calc_trees(hill, run)
+print(ans)
